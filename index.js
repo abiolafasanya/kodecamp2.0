@@ -1,7 +1,8 @@
 const http = require("http");
+const { hostname } = require("os");
 const { requesListener } = require("./request");
 
-const host = process.env. || "localhost";
+const host = "localhost";
 const port = process.env.PORT || 8000;
 
 const server = (action) => {
