@@ -34,6 +34,17 @@
 - ReadMe.md
 - request.js
 
+## Link to test Tast
+[Base Url](http://kodecamp2.herokuapp.com)
+### HomePage
+[HomePage Link on Heroku](http://kodecamp2.herokuapp.com/home)
+
+### About Me
+[About me Link on Heroku](http://kodecamp2.herokuapp.com/about)
+
+### Contact me
+[Contact me Link on Heroku](http://kodecamp2.herokuapp.com/contact)
+
 ## Note
  1. No third-party dependencies should be used on this task
  2. You don't need to style your HTML pages
