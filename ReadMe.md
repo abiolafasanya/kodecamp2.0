@@ -28,7 +28,7 @@
   - error.html
   - index.html
 - index.js
--package.json
+- package.json
 - ReadMe.md
 - request.js
 
