@@ -3,10 +3,10 @@ const path = require("path");
 const { log } = require("console");
 
 exports.requesListener = function (req, res) {
-  if (req.url == "/") {
-    res.writeHead(301, { Location: "http://" + req.headers["host"] + "/home" });
+  if (req.url == "/home") {
+    res.writeHead(301, { Location: "http://" + req.headers["host"] + "/" });
     res.end();
-  } else if (req.url == "/home") {
+  } else if (req.url == "/") {
     fs.readFile(path.resolve("./view/index.html"), (err, page) => {
       if (err) return console.error(err);
       res.writeHead(200, { "content-type": "text/html" });
