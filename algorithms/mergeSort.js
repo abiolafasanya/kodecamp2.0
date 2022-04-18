@@ -11,7 +11,6 @@ let arrayList = {
  *  ==================================================================================
  * merge sort algorithm runs slower with small input but it will be faster than 
  * Bubble sort when the input becomes larger
- * reas
  * 
  * @mergeSort function
  * @param {* for middle index of array} middle 

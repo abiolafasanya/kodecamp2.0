@@ -1,110 +1,88 @@
-<p align="center">
-  <a href="" rel="noopener">
- <img width=200px height=200px src="https://i.imgur.com/6wj0hh6.jpg" alt="Project logo"></a>
-</p>
-
-<h3 align="center">kodecamp</h3>
-
-<div align="center">
-
-
-</div>
+<h3 align="center">kodecamp 2</h3>
 
 ---
-
-<p align="center"> Few lines describing your project.
-    <br> 
-</p>
 
 ## 📝 Table of Contents
 
 - [About](#about)
-- [Getting Started](#getting_started)
-- [Deployment](#deployment)
 - [Usage](#usage)
+- [Deployment](#deployment)
 - [Built Using](#built_using)
-- [TODO](../TODO.md)
-- [Contributing](../CONTRIBUTING.md)
 - [Authors](#authors)
 - [Acknowledgments](#acknowledgement)
 
 ## 🧐 About <a name = "about"></a>
 
-Write about 1-2 paragraphs describing the purpose of your project.
+In computer science, a sorting algorithm is an algorithms that puts elements of a list into an order
 
-## 🏁 Getting Started <a name = "getting_started"></a>
+### Bubble sort Algorithm
+ * Bubble sort, is a simple algorithm. 
+ * This algorithm will compare algorithms in which each pair of adjacent elements is compared 
+ * and the element are swapped if they are not in order.
+ * Due to the fact that the time complexity of this algorithm is O(n^2)
+ * @bubbleSort is used when we have a small input it is not suitable for large data
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
+### Merge sort Algorithm
+ merge sort algorithm runs slower with small input but it will be faster than Bubble sort when the input becomes larger
 
-### Prerequisites
+### Quick Sort Algorithm
+ * This sorting algorithm is used for information searching and as Quicksort is the fastest algorithm so it is widely used as a better way of searching .
+ * It is used where a stable sort is not needed
+ * sorting n objects takes only n(log n) time
+ * In the worst-case scenario, it takes quadratic (i.e, n2) time
+ * Merge sort is more efficeint and works faster than quick sort in case of larger array size and datasets
+ * Quick sort is more efficient and works faster then merge sort in case of smaller array size and datasets
 
-What things you need to install the software and how to install them.
+ ## Task
+ - [234, 43, 55, 63, 5, 235, 547]
+ - [1,4, 2, 5, -2, 3]
+ - [52, 37, 63, 14, 17, 8, 6, 25]
 
+ - Using the provided sample datasets above to test your code, implement the following algorithms
+ 1. Bubble Sort
+ 2. Merge Sort
+ 3. Quicksort
+
+## 🎈 Usage <a name="usage"></a>
+
+```bash
+git clone [url]
 ```
-Give examples
+
+To run bubble sort algorithm use
+
+```bash
+yarn bubble or npm bubble
 ```
+To run quick sort algorithm use
 
-### Installing
-
-A step by step series of examples that tell you how to get a development env running.
-
-Say what the step will be
-
+```bash
+yarn quick or npm quick
 ```
-Give the example
-```
+To run merge sort algorithm use
 
-And repeat
-
-```
-until finished
+```bash
+yarn merge or npm merge
 ```
 
 End with an example of getting some data out of the system or using it for a little demo.
 
-## 🔧 Running the tests <a name = "tests"></a>
-
-Explain how to run the automated tests for this system.
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## 🎈 Usage <a name="usage"></a>
 
 Add notes about how to use the system.
 
 ## 🚀 Deployment <a name = "deployment"></a>
 
-Add additional notes about how to deploy this on a live system.
 
-## ⛏️ Built Using <a name = "built_using"></a>
+## ⛏️ Language Used <a name = "built_using">JavaScript</a>
 
-- [MongoDB](https://www.mongodb.com/) - Database
-- [Express](https://expressjs.com/) - Server Framework
-- [VueJs](https://vuejs.org/) - Web Framework
 - [NodeJs](https://nodejs.org/en/) - Server Environment
 
-## ✍️ Authors <a name = "authors"></a>
+## ✍️ Authors <a name = "authors">Abiola Fasanya</a>
 
-- [@kylelobo](https://github.com/kylelobo) - Idea & Initial work
-
-See also the list of [contributors](https://github.com/kylelobo/The-Documentation-Compendium/contributors) who participated in this project.
+- [@fastbeetech](https://github.com/fastbeetech) - Work
 
 ## 🎉 Acknowledgements <a name = "acknowledgement"></a>
 
-- Hat tip to anyone whose code was used
-- Inspiration
-- References
+- Kodecamp 2.0
+- Ewosoft
+- Prosper.js
