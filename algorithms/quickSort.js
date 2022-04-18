@@ -32,14 +32,13 @@ function swap(arr, i, j) {
   arr[j] = temp;
 }
 
-// console.log(quickSort(arrayList.arr1, 0, arrayList.arr1.length - 1));
-console.log("\n array one after \n");
-console.log(arrayList.arr1)
+console.clear();
+console.info("Quick Sort Alrgorithm \n");
+quickSort(arrayList.arr1, 0, arrayList.arr1.length - 1);
+console.log(`Array One result: ${arrayList.arr1} \n`);
 
-// console.log(quickSort(arrayList.arr2, 0, arrayList.arr2.length - 1));
-// console.log("\n array two after \n");
-// console.log(arrayList.arr2)
+quickSort(arrayList.arr2, 0, arrayList.arr1.length - 1);
+// console.log(`Array two result: ${arrayList.arr2} \n`);
 
-// console.log(quickSort(arrayList.arr3, 0, arrayList.arr3.length - 1));
-// console.log("\n array three after \n");
-// console.log(arrayList.arr3)
+quickSort(arrayList.arr3, 0, arrayList.arr1.length - 1);
+// console.log(`Array three result: ${arrayList.arr3} \n`);

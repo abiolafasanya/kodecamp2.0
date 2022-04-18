@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "bubble": "echo \"running bubble sort algorithm\" && node algorithms/bubbleSort",
+    "quick": "echo \"running quick sort algorithm\" && node algorithms/quickSort",
+    "merge": "echo \"running merge sort algorithm\" && node algorithms/mergeSort"
   },
   "keywords": [],
   "author": "",

@@ -19,14 +19,14 @@ const bubbleSort = (arr) => {
   }
 };
 
+console.clear();
+console.info("Bubble Sort Alrgorithm \n");
+
 bubbleSort(arrayList.arr1);
-console.log(arrayList.arr1);
-console.log("\n array one after \n");
+console.log(`Array One result: ${arrayList.arr1} \n`);
 
 bubbleSort(arrayList.arr2);
-console.log(arrayList.arr2);
-console.log("\n array two after \n");
+console.log(`Array two result: ${arrayList.arr2} \n`);
 
 bubbleSort(arrayList.arr3);
-console.log(arrayList.arr3);
-console.log("\n array three after \n");
+console.log(`Array three result: ${arrayList.arr3} \n`);

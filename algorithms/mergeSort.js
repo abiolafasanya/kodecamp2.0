@@ -39,12 +39,14 @@ const merge = (left, right) => {
   return result;
 };
 
-console.log(mergeSort(arrayList.arr1));
-console.log("\n array one after \n");
+console.clear();
+console.info("Merge Sort Alrgorithm \n");
 
-console.log(mergeSort(arrayList.arr2));
-console.log("\n array two after \n");
+mergeSort(arrayList.arr1);
+console.log(`Array One result: ${arrayList.arr1} \n`);
 
-console.log(mergeSort(arrayList.arr3));
-console.log("\n array three after \n");
+mergeSort(arrayList.arr2);
+console.log(`Array two result: ${arrayList.arr2} \n`);
 
+mergeSort(arrayList.arr3);
+console.log(`Array three result: ${arrayList.arr3} \n`);
