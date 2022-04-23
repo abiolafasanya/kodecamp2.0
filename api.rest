@@ -1,0 +1,40 @@
+@url = http://localhost:3000/ecommerce/
+@id = 626448b905786cf2feddfd35
+
+###
+# @name allProduct
+GET {{url}} HTTP/1.1
+
+###
+# @name getProduct
+GET {{url}}/{{id}} HTTP/1.1
+###
+
+# @name addProduct
+POST {{url}} HTTP/1.1
+Accept:  application/json
+Content-Type: application/json
+
+{
+    "name": "HP Pavillion",
+    "description": "New, 8GB ram, ssd",
+    "category": "electronics",
+    "price": 150000
+}
+
+###
+# @name updateProduct
+PUT {{url}}/{{id}} HTTP/1.1
+Accept:  application/json
+Content-Type: application/json
+
+{
+    "name": "hp pavillion 14HD",
+    "description": "New, 8GB ram, ssd",
+    "category": "laptop",
+    "price": 350000
+}
+
+###
+# @name removeProduct
+DELETE {{url}}/{{id}} HTTP/1.1
