@@ -1,5 +1,8 @@
 # EcommerceApi
 
+> Base URL
+    > http://localhost:3000/product
+
 ## Table of Contents
 
 - [About](#about)

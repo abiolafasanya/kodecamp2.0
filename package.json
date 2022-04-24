@@ -1,5 +1,5 @@
 {
-  "name": "EcommerceApi",
+  "name": "ecommerce-api",
   "version": "1.0.0",
   "description": "Create an Api for CRUD operations for products",
   "main": "app.js",
@@ -13,6 +13,6 @@
   }, 
   "scripts": {
     "dev": "nodemon app.js",
-    "start": "npm run dev"
+    "start": "node app.js"
   }
 }
