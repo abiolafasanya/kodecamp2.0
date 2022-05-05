@@ -8,7 +8,7 @@ import connect from "./utils/database.js";
 const app = express();
 
 // use
-connect()
+connect();
 app.use(json());
 app.use(erroHandler);
 app.use(

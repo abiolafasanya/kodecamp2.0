@@ -1,4 +1,4 @@
-import model from "./schema";
+import model from "./schema.js";
 
 export async function getAllProduct(req, res) {
   const products = await model.find({});
@@ -15,6 +15,14 @@ export async function getProduct(req, res) {
     status: 200,
     data: product,
   });
+}
+export async function addProduct(req, res) {
+  const product = await model.create(req.body);
+  res.json({
+    success: true,
+    status: 201,
+    data: product,
+  })
 }
 export async function updateProduct(req, res) {
   const product = await model.findOneAndUpdate(
@@ -37,12 +45,14 @@ export async function deleteProduct(req, res) {
   });
 }
 export async function searchProduct(req, res) {
-    const products = await model.find({$where: function() {
-        return /^.*${req.params.search}.*$/.test(this.name);
-    }});
-    res.json({
-        success: true,
-        status: 200,
-        data: products,
-    });
+  const products = await model.find({
+    $where: function () {
+      return /^.*${req.params.search}.*$/.test(this.name);
+    },
+  });
+  res.json({
+    success: true,
+    status: 200,
+    data: products,
+  });
 }

@@ -1,14 +1,17 @@
-import { model, Schema } from "mongoose";
+import mongoose from "mongoose";
+const { model, Schema } = mongoose;
 
 const Productschema = new Schema(
   {
     name: {
       type: String,
       required: true,
+      trim: true,
     },
     description: {
       type: String,
       required: true,
+      trim: true,
     },
     price: {
       type: Number,
@@ -18,4 +21,4 @@ const Productschema = new Schema(
   { timestamps: true }
 );
 const product = model("Product", Productschema);
-export default product
+export default product;
