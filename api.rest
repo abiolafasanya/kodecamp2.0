@@ -1,4 +1,4 @@
-@url = http://localhost:3000/product
+@url = http://localhost:4000/product
 @id = 626448b905786cf2feddfd35
 
 ###
@@ -38,3 +38,9 @@ Content-Type: application/json
 ###
 # @name removeProduct
 DELETE {{url}}/{{id}} HTTP/1.1
+
+###
+GET  {{url}}/name/macbook  HTTP/1.1
+
+###
+GET  {{url}}/category/electronics  HTTP/1.1

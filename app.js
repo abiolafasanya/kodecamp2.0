@@ -1,27 +1,35 @@
-require("dotenv").config();
-const path = require("path");
-const express = require("express");
-const Database = require("./configs/db");
-const config = require("./configs/config");
-new Database().mongodb().connect(config.local_mongodb_uri);
-const app = express(); // create an instance of express
+import express, { json, urlencoded } from "express";
+import morgan from "morgan";
+import Database from "./configs/db.js";
+import config from "./configs/config.js";
+import { erroHandler } from "./configs/helpers.js";
+import productRouter from "./routers/productRoute.js";
+import userRouter from "./routers/usersRoute.js"
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+const app = express();
+Database(config.local_mongodb_uri);
+
+//use
+app.use(json());
+app.use(urlencoded({ extended: true }));
+app.use(erroHandler);
+app.use(
+  morgan(":method :url :status :res[content-length] - :response-time ms")
+);
 
 app.get("/", (req, res) => {
   let div = `<div>
-              <h1>Hello World! use 
+              <h3>Hello World! use 
               <a href="http://localhost:3000/product">http://localhost:3000/product</a>
-               to test </h1>
+               to test </h3>
             </div>`;
   res.send(div);
 });
 
-const productRouter = require("./routers/route");
 app.use("/product", productRouter);
+app.use("/user", userRouter)
 
-app.set("port", process.env.PORT || 3000);
-app.listen(3000, () => {
-  console.log(`Listening on port ${app.get("port")}`); // eslint-disable-line no-console
+app.set("port", config.port || 3000);
+app.listen(app.get("port"), () => {
+  consola.info(`🚕 Driving on port ${app.get("port")}`); 
 });

@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "name": "ecommerce-api",
   "version": "1.0.0",
   "description": "Create an Api for CRUD operations for products",
@@ -6,13 +7,20 @@
   "author": "Abiola Fasanya",
   "license": "MIT",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "consola": "^2.15.3",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
+    "joi": "^17.6.0",
     "mongoose": "^6.3.1"
-  }, 
+  },
   "scripts": {
     "dev": "nodemon app.js",
-    "start": "node app.js"
+    "start": "node app.js",
+    "test": "nodemon practice.js"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.16"
   }
 }

@@ -1,8 +1,7 @@
-require("dotenv").config();
+import {config} from "dotenv";
+config()
 
-const environments = {};
-
-module.exports = {
+const environments = {
     'port': process.env.PORT || 4000,
     'host': `http://localhost:4000/api/v1`,
     'secret': 'ZPUyxiyqGiYyXutHJfG3jTrpnDsh0XqK',
@@ -10,3 +9,5 @@ module.exports = {
     "mongodb_uri": process.env.MONGODB_URI || "",
     "local_mongodb_uri": process.env.MONGODB_URI_LOCAL || "mongodb://localhost:27017/ecommerce",
 };
+
+export default environments

@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 const { Schema, model } = mongoose;
 
 // product Schema
@@ -16,19 +16,16 @@ const productSchema = new Schema(
     },
     category: {
       type: String,
-      required: true,
+      default: 'unknown',
       trim: true,
     },
     price: {
       type: Number,
-      required: true,
-    },
-    dateCreated: {
-      type: Date,
-      default: Date.now,
+      default: 0,
     },
   },
   { timestamps: true }
 );
 
-exports.productModel = model("products", productSchema);
+const productModel = model("products", productSchema);
+export default productModel;
