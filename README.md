@@ -2,6 +2,23 @@
 
 > Base URL
     > http://localhost:3000/product
+    > http://local host:3000/users
+
+```
+## User Routes
+  @param allUsers http://localhost:{port}/
+ + gets all users from the database
+  @param findUser http://localhost:{port}/:id
+ + gets a single user by id from the database
+  @param register http://localhost:{port}/register
+ + create or register a new user
+  @param updateUser http://localhost:{port}/update/:id
+ + updates users record based on user id
+  @param deactivateUser http://localhost:{port}/deactivate/:id
+ + changes the status of the user to deactivated
+   @param activateUser http://localhost:{port}/activate/:id
+ + changes the status of the user to activated
+```
 
 ## Table of Contents
 
