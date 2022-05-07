@@ -23,8 +23,13 @@ const userSchema = new Schema(
     password: {
         type: String,
         required: true,
-        trim: true
-    }
+        trim: true,
+        select: false,
+    },
+    isDeleted: {
+      type: Boolean,
+      default: false
+    },
   },
   { timestamps: true }
 );

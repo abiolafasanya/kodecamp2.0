@@ -1,16 +1,22 @@
 @url = http://localhost:4000/user
-
+@id = 6275e4d6a046e3b7adc443de
 GET {{url}} HTTP/1.1
-
 ###
-
-POST {{url}} HTTP/1.1
+GET {{url}}/{{id}} HTTP/1.1
+###
+POST {{url}}/register HTTP/1.1
 Accept:  application/json
 Content-Type: application/json
 
 {
-    "firstname": "samuel",
+    "firstname": "damilare0",
     "lastname": "fasanya",
-    "email": "samuel@gmail.com",
-    "password": "samuel78"
+    "email": "damilare0@gmail.com",
+    "password": "damilare02022"
 }
+
+###
+GET {{url}}/activate/{{id}} HTTP/1.1
+
+###
+DELETE {{url}}/deactivate/{{id}} HTTP/1.1
