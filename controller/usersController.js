@@ -25,16 +25,17 @@ export const allUsers = async (req, res) => {
 
 // Read single Users
 export const findUser = async (req, res) => {
-  let id = { _id: req.params.id };
   // check if user is not deleted/deactivated
   let status = await deactivated({ _id: req.params.id });
   if (status)
     return res.status(400).json({
       message: "Your account has been deactivated",
     });
-    // if user is not deactivated or deleted find user
-  let user = await Model.findOne(id).sort({ createdAt: "desc" });
-  user.length > 0
+  // if user is not deactivated or deleted find user
+  let user = await Model.findOne({ _id: req.params.id }).sort({
+    createdAt: "desc",
+  });
+  user
     ? res.status(200).json({
         ok: true,
         user,
@@ -64,7 +65,7 @@ export const register = async (req, res) => {
     let ifEmail = await Model.findOne({ email });
     if (ifEmail)
       return res.status(401).json({ message: "Email Exists use another" });
-      // if email does not exists proceed to creating a new user
+    // if email does not exists proceed to creating a new user
     let user = await Model.create(newUser);
     user
       ? res.status(201).json({
@@ -86,13 +87,13 @@ export const register = async (req, res) => {
 export const updateUser = async (req, res) => {
   try {
     let id = { _id: req.params.id };
-    // 
+    //
     // check if user is not deleted/deactivated
-  let status = await deactivated({ _id: req.params.id });
-  if (status)
-    return res.status(400).json({
-      message: "Your account has been deactivated",
-    });
+    let status = await deactivated({ _id: req.params.id });
+    if (status)
+      return res.status(400).json({
+        message: "Your account has been deactivated",
+      });
 
     let { error, value } = updateValidate.validate(req.body);
     if (error) {
@@ -165,7 +166,7 @@ export const activateUser = async (req, res) => {
         res.status(200).json({
           ok: true,
           user,
-          message: "Account has been deactivated",
+          message: "Account has been activated",
         });
       }
       // let user = await Model.findOneAndRemove({ _id: req.params.id });
