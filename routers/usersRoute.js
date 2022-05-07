@@ -36,7 +36,7 @@ router.get("/activate/:id", activateUser);
 router.delete("/deactivate/:id", deactivateUser);
 router.put("/reset-password/:email", updatePassword)
 
-//test route for signin
+//test route for signin to ensure password update is working
 router.post("/signin/:id", sigin)
 
 export default router;

@@ -1,8 +1,10 @@
 # EcommerceApi
 
 > Base URL
-    > http://localhost:3000/product
-    > http://local host:3000/users
+
+> http://localhost:3000/product
+
+> http://localhost:3000/users
 
 ```
 ## User Routes
@@ -18,6 +20,8 @@
  + changes the status of the user to deactivated
    @param activateUser http://localhost:{port}/activate/:id
  + changes the status of the user to activated
+  @param updatePassword http://localhost:{port}/reset-password/:email
+  update user password
 ```
 
 ## Table of Contents
@@ -42,7 +46,8 @@ the intermediate API folder structure
     - Product.js
     - User.js
 - routers
-    -
+    - productRoute.js
+    - usersRoute.js
 
 
 ## Getting Started <a name = "getting_started"></a>
@@ -75,6 +80,6 @@ git clone <repository-url>
 and install dependencies doing
 
 ```
-yarn install // using npm do npm install
+yarn install // using npm >> do npm install
 ```
 
