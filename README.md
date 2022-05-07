@@ -14,6 +14,19 @@
 Ecommerce Api is a kodecamp two assignment and it is based on classes help on mongoDb. The task is to use
 the intermediate API folder structure
 > Set up your code using models, controllers, routers and config
+- configs
+    - config.js
+    - db.js
+    - helpers.js
+- controller
+    - productController.js
+    - usersController.js
+- model
+    - Product.js
+    - User.js
+- routers
+    -
+
 
 ## Getting Started <a name = "getting_started"></a>
 

@@ -32,3 +32,14 @@ export function erroHandler(err, req, res, next) {
      let result = user.isDeleted ? true: false
      return result;
   }
+
+  export const updatePwdValidate = (params) => {
+    
+  };
+
+  export const pwdUpdateValidate = joi.object({
+    password: joi.string().pattern(/^[\w@#&+-.]/).min(8).required(),
+    confirm_password: joi.ref("password"),
+  });
+  
+  

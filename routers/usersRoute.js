@@ -9,6 +9,8 @@ import {
   allUsers,
   deactivateUser,
   activateUser,
+  updatePassword,
+  sigin,
 } from "../controller/usersController.js";
 
 /**
@@ -24,6 +26,7 @@ import {
  * changes the status of the user to deactivated
  *  @param activateUser http://localhost:{port}/activate/:id
  * changes the status of the user to activated
+ * @param updatePassword http://localhost:{port}/reset-password/:email
  */
 router.get("/", allUsers);
 router.get("/:id", findUser);
@@ -31,5 +34,9 @@ router.post("/register", register);
 router.put("/update/:id", updateUser);
 router.get("/activate/:id", activateUser);
 router.delete("/deactivate/:id", deactivateUser);
+router.put("/reset-password/:email", updatePassword)
+
+//test route for signin
+router.post("/signin/:id", sigin)
 
 export default router;

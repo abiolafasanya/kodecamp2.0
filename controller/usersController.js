@@ -3,6 +3,7 @@ import bcrypt from "bcrypt";
 import {
   createValidate,
   deactivated,
+  pwdUpdateValidate,
   updateValidate,
 } from "../configs/helpers.js";
 
@@ -149,6 +150,7 @@ export const deactivateUser = async (req, res) => {
   }
 };
 
+// activate user account
 export const activateUser = async (req, res) => {
   try {
     let status = await deactivated({ _id: req.params.id });
@@ -178,4 +180,65 @@ export const activateUser = async (req, res) => {
     console.error(error.message);
     res.status(500).json({ message: error.message });
   }
+};
+
+// update user password
+export const updatePassword = async (req, res) => {
+  try {
+    // check if user is not deleted/deactivated
+    let status = await deactivated({ email: req.params.email });
+    if (status)
+      return res.status(400).json({
+        message: "Your account has been deactivated",
+      });
+    // check if user exists
+    let checkUser = await Model.findOne({ email: req.params.email });
+    if (!checkUser) return res.status(401).json({ message: "user not found" });
+    let userID = checkUser._id;
+    console.log("User Id is:", userID);
+    // validate input with joi
+    let { error, value } = pwdUpdateValidate.validate(req.body);
+    if (error) {
+      console.error(error.message);
+      res
+        .status(400)
+        .json({ message: "validation failed ⚠", error: error.message });
+    }
+    let { password } = value;
+    // hashing password
+    password = await bcrypt.hash(password, 10);
+    // find the user and update
+    let user = await Model.findOneAndUpdate(
+      { _id: userID },
+      { password: password },
+      { new: true }
+    );
+    if (user) {
+      res.status(200).json({
+        ok: true,
+        user,
+        message: "password successfully updated ✌",
+      });
+    } else
+      res.status(400).json({
+        message: "password update failed❗",
+      });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({
+      ok: false,
+      message: error.message,
+    });
+  }
+};
+
+//not part of assignment but for testing to comfirm that update password work by comparing to get a true
+export const sigin = async (req, res) => {
+  let user = await Model.findOne({ _id: req.params.id }).select("+password");
+  console.log(user.password);
+  // compare password
+  let ifPassword = bcrypt.compareSync(req.body.password, user.password);
+  if (ifPassword)
+    return console.log("password is correct, You are now SignedIn", ifPassword);
+  else return console.log("password is incorrect", ifPassword);
 };
