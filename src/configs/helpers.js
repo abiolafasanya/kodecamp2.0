@@ -1,5 +1,5 @@
 import joi from "joi"
-import User from "../models/User.js"
+import User from "../api/models/User.js"
 
 export function erroHandler(err, req, res, next) {
     console.error(err.stack);
@@ -37,7 +37,7 @@ export function erroHandler(err, req, res, next) {
     
   };
 
-  export const pwdUpdateValidate = joi.object({
+  export const  pwdUpdateValidate = joi.object({
     password: joi.string().pattern(/^[\w@#&+-.]/).min(8).required(),
     confirm_password: joi.ref("password"),
   });

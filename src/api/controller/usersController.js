@@ -5,7 +5,7 @@ import {
   deactivated,
   pwdUpdateValidate,
   updateValidate,
-} from "../configs/helpers.js";
+} from "../../configs/helpers.js";
 
 // Read all Users
 export const allUsers = async (req, res) => {

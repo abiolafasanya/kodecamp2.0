@@ -1,10 +1,10 @@
 import express, { json, urlencoded } from "express";
 import morgan from "morgan";
-import Database from "./configs/db.js";
-import config from "./configs/config.js";
-import { erroHandler } from "./configs/helpers.js";
-import productRouter from "./routers/productRoute.js";
-import userRouter from "./routers/usersRoute.js";
+import Database from "./src/configs/db.js";
+import config from "./src/configs/config.js";
+import { erroHandler } from "./src/configs/helpers.js";
+import productRouter from "./src/api/routers/productRoute.js";
+import userRouter from "./src/api/routers/usersRoute.js";
 
 const app = express();
 Database(config.local_mongodb_uri);
