@@ -26,6 +26,11 @@ const userSchema = new Schema(
         trim: true,
         select: false,
     },
+    accessToken:{
+      type: String,
+      default: '',
+      select: false,
+    },
     isDeleted: {
       type: Boolean,
       default: false

@@ -5,6 +5,7 @@ import config from "./src/configs/config.js";
 import { erroHandler } from "./src/configs/helpers.js";
 import productRouter from "./src/api/routers/productRoute.js";
 import userRouter from "./src/api/routers/usersRoute.js";
+import authRouter from "./src/api/routers/authRoute.js";
 
 const app = express();
 Database(config.local_mongodb_uri);
@@ -18,11 +19,12 @@ app.use(
 );
 
 app.get("/", (req, res) => {
-  res.send('<h2>Ecommerce App</h2>');
+  res.send("<h2>Ecommerce App</h2>");
 });
 
 app.use("/product", productRouter);
 app.use("/user", userRouter);
+app.use("/auth", authRouter);
 
 app.set("port", config.port || 3000);
 app.listen(app.get("port"), () => {

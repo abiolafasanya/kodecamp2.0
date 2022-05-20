@@ -1115,6 +1115,11 @@ isstream@~0.1.2:
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
   integrity sha1-R+Y/evVa+m+S4VAOaQ64uFKcCZo=
 
+joi-password-complexity@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/joi-password-complexity/-/joi-password-complexity-5.1.0.tgz#7506d3adce429d52c1331910f20fd5f571c273d1"
+  integrity sha512-2F/cPybttJGuyVmZ8X/yihemshhAuFt4fHGlz8CFNP7R8PzH90K8OeNzY9RrdADM6uu3D2xTXej/odvRjdkqaw==
+
 joi@^17.6.0:
   version "17.6.0"
   resolved "https://registry.yarnpkg.com/joi/-/joi-17.6.0.tgz#0bb54f2f006c09a96e75ce687957bd04290054b2"

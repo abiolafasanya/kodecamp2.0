@@ -68,10 +68,11 @@ export const register = async (req, res) => {
       return res.status(401).json({ message: "Email Exists use another" });
     // if email does not exists proceed to creating a new user
     let user = await Model.create(newUser);
+    let getDbUser = await Model.findOne({ _id: user._id });
     user
       ? res.status(201).json({
           ok: true,
-          user,
+          user: getDbUser,
           message: "New user created 😇",
         })
       : res.status(400).json({

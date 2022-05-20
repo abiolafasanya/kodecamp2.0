@@ -1,6 +1,5 @@
 import { Router } from "express";
-
-const router = Router();
+import auth from "../middleware/auth.js";
 
 import {
   allProduct,
@@ -12,12 +11,14 @@ import {
   filterCategory,
 } from "../controller/productController.js";
 
+const router = Router();
+
 router.get("/", allProduct);
-router.post("/", addProduct);
+router.post("/", auth, addProduct);
 router.get("/:id", getProduct);
-router.put("/:id", updateProduct);
+router.put("/:id", auth, updateProduct);
 router.get("/name/:name", filterName);
 router.get("/category/:category", filterCategory);
-router.delete("/:id", removeProduct);
+router.delete("/:id", auth, removeProduct);
 
 export default router;

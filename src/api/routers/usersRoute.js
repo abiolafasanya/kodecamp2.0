@@ -1,6 +1,5 @@
 import { Router } from "express";
-
-const router = Router();
+import auth from "../middleware/auth.js";
 
 import {
   register,
@@ -12,6 +11,7 @@ import {
   updatePassword,
   sigin,
 } from "../controller/usersController.js";
+const router = Router();
 
 /**
  * @param allUsers http://localhost:{port}/
@@ -34,9 +34,9 @@ router.post("/register", register);
 router.put("/update/:id", updateUser);
 router.get("/activate/:id", activateUser);
 router.delete("/deactivate/:id", deactivateUser);
-router.put("/reset-password/:email", updatePassword)
+router.put("/reset-password/:email", updatePassword);
 
 //test route for signin to ensure password update is working
-router.post("/signin/:id", sigin)
+router.post("/signin/:id", sigin);
 
 export default router;
