@@ -2,9 +2,9 @@ import { config } from "dotenv";
 import jwt from "jsonwebtoken";
 
 config();
-const { SECRET } = process.env;
+const { JWT_SECRET } = process.env;
 
-const jwtAuth = async (req, res, next) => {
+const auth = async (req, res, next) => {
   const authHeader = req.headers.authorization;
 
   // If token doesn't Exit
@@ -19,7 +19,7 @@ const jwtAuth = async (req, res, next) => {
   const token = authHeader.split(" ")[1];
 
   try {
-    await jwt.verify(token, SECRET, (err, user) => {
+    jwt.verify(token, JWT_SECRET, (err, user) => {
       if (err) {
         res.status(403).json({
           status: 403,
@@ -38,4 +38,4 @@ const jwtAuth = async (req, res, next) => {
   }
 };
 
-export default jwtAuth;
+export default auth;

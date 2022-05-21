@@ -6,12 +6,14 @@ import { erroHandler } from "./src/configs/helpers.js";
 import productRouter from "./src/api/routers/productRoute.js";
 import userRouter from "./src/api/routers/usersRoute.js";
 import authRouter from "./src/api/routers/authRoute.js";
+import cookieParser  from "cookie-parser";
 
 const app = express();
 Database(config.local_mongodb_uri);
 
 //use
 app.use(json());
+app.use(cookieParser());
 app.use(urlencoded({ extended: true }));
 app.use(erroHandler);
 app.use(
@@ -19,6 +21,7 @@ app.use(
 );
 
 app.get("/", (req, res) => {
+  res.cookie("hello", "this is cookies in action")
   res.send("<h2>Ecommerce App</h2>");
 });
 

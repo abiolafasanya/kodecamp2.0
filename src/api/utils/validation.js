@@ -1,5 +1,6 @@
 import joi from "joi";
 import JoiPasswordComplexity  from "joi-password-complexity";
+import User from "../models/User.js"
 
 const complexityOptions = {
     min: 8,

@@ -26,7 +26,7 @@ const userSchema = new Schema(
         trim: true,
         select: false,
     },
-    accessToken:{
+    refreshToken:{
       type: String,
       default: '',
       select: false,

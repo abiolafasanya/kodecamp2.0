@@ -10,10 +10,10 @@ Accept:  application/json
 Content-Type: application/json
 
 {
-    "firstname": "abiola",
+    "firstname": "damilare",
     "lastname": "fasanya",
-    "email": "abiola@gmail.com",
-    "password": "abiola2022"
+    "email": "damilare@gmail.com",
+    "password": "damilare2022"
 }
 ###
 PUT {{url}}/update/{{id}} HTTP/1.1

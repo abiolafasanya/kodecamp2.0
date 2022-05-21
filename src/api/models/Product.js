@@ -4,6 +4,10 @@ const { Schema, model } = mongoose;
 // product Schema
 const productSchema = new Schema(
   {
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: "users",
+    },
     name: {
       type: String,
       required: true,
@@ -23,6 +27,11 @@ const productSchema = new Schema(
       type: Number,
       default: 0,
     },
+    // author: {
+    //   type: String,
+    //   default: 'unknown',
+    //   trim: true,
+    // },
   },
   { timestamps: true }
 );
