@@ -3,7 +3,6 @@ import User from "../models/User.js";
 class Check {
   static deactivated = async (req, res, next) => {
     let user = await User.findOne({ email: req.params.email });
-    console.log("deactivated status: ", user.isDeleted);
     let ifDeleted = user.isDeleted ? true : false;
     req.deleted = ifDeleted;
     if (!ifDeleted)

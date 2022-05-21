@@ -13,12 +13,14 @@ import {
 
 const router = Router();
 
+router.use(auth)
+
 router.get("/", allProduct);
-router.post("/", auth, addProduct);
+router.post("/", addProduct);
 router.get("/:id", getProduct);
-router.put("/:id", auth, updateProduct);
+router.put("/:id", updateProduct);
 router.get("/name/:name", filterName);
 router.get("/category/:category", filterCategory);
-router.delete("/:id", auth, removeProduct);
+router.delete("/:id", removeProduct);
 
 export default router;

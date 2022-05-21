@@ -27,11 +27,11 @@ const productSchema = new Schema(
       type: Number,
       default: 0,
     },
-    // author: {
-    //   type: String,
-    //   default: 'unknown',
-    //   trim: true,
-    // },
+    addedBy: {
+      type: String,
+      default: 'unknown',
+      trim: true,
+    },
   },
   { timestamps: true }
 );

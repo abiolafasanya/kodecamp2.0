@@ -7,7 +7,7 @@ const router = Router();
 
 // authControler
 router.post("/register", controller.register);
-router.post("/login", check.deactivated, controller.logIn);
+router.post("/login", controller.logIn);
 router.get("/logout", controller.logOut);
 router.get("/refresh", controller.requestToken);
 

@@ -35,6 +35,7 @@ export const getProduct = async (req, res) => {
 
 export const addProduct = async (req, res) => {
   try {
+    console.log('added by ', req.user.name)
     const data = await Model.create(req.body);
     data
       ? res.status(200).json({ ok: true, data, message: "Product added 😊" })

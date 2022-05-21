@@ -45,46 +45,6 @@ class authController {
     }
   };
 
-  static register = async (req, res) => {
-    try {
-      let { error, value } = createValidate.validate(req.body);
-      // joi error handler
-      if (error) {
-        console.error(error.message);
-        return res
-          .status(400)
-          .json({ message: "validation failed", error: error.message });
-      }
-      // continue if validation passed
-      let { firstname, lastname, email, password } = value;
-      // hash password
-      password = await bcrypt.hash(password, 10);
-      const newUser = { firstname, lastname, email, password };
-      // check if email exists
-      let ifEmail = await Model.findOne({ email });
-      if (ifEmail)
-        return res
-          .status(401)
-          .json({ message: "Email Exists register with another" });
-      // if email does not exists proceed to creating a new user
-      let user = await Model.create(newUser);
-      let getDbUser = await Model.findOne({ _id: user._id });
-      user
-        ? res.status(201).json({
-            ok: true,
-            user: getDbUser,
-            message: "New user created 😇",
-          })
-        : res.status(400).json({
-            ok: false,
-            message: "❗ Error encountered while creating new user",
-          });
-    } catch (error) {
-      console.error(error.message);
-      res.status(500).json({ ok: false, message: error.message });
-    }
-  };
-
   static logIn = async (req, res) => {
     try {
       let data = await loginValidation.validateAsync(req.body);
@@ -95,7 +55,12 @@ class authController {
       // compare password
       let ifPassword = bcrypt.compareSync(password, user.password);
       if (ifPassword) {
-        const token = generateAuthToken(user._id);
+        let payload = {
+          id: user._id,
+          name: user.firstname + " " + user.lastname,
+        };
+
+        const token = generateAuthToken(payload);
         if (!token) return console.log("token is not generated");
 
         user.refreshToken = token.refreshToken;
