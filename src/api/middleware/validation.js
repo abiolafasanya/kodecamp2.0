@@ -1,9 +1,15 @@
-import User from "../models/User.js"
+import User from "../models/User.js";
 
-export const isActive = async (id) => {
-    let user = await User.findOne(id);
+class Check {
+  static deactivated = async (req, res, next) => {
+    let user = await User.findOne({ email: req.params.email });
     console.log("deactivated status: ", user.isDeleted);
-    let result = user.isDeleted ? true : false;
-    return result;
+    let ifDeleted = user.isDeleted ? true : false;
+    req.deleted = ifDeleted;
+    if (!ifDeleted)
+      return res.status(400).json({ message: "User has been deactivated" });
+    next();
   };
-  
+}
+
+export default Check;

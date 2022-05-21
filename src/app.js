@@ -2,7 +2,7 @@ import express, { json, urlencoded } from "express";
 import morgan from "morgan";
 import Database from "./configs/db.js";
 import config from "./configs/config.js";
-import { erroHandler } from "./configs/helpers.js";
+import { erroHandler } from "./api/utils/helper.js";
 import productRouter from "./api/routers/productRoute.js";
 import userRouter from "./api/routers/usersRoute.js";
 import cookieParser  from "cookie-parser";

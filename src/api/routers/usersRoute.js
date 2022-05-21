@@ -1,13 +1,13 @@
 import { Router } from "express";
 import auth from "../middleware/auth.js";
-import { isActive } from "../middleware/validation.js";
+import check from "../middleware/validation.js";
 
 import controller from "../controller/usersController.js";
 const router = Router();
 
 // authControler
 router.post("/register", controller.register);
-router.post("/login", controller.logIn);
+router.post("/login", check.deactivated, controller.logIn);
 router.get("/logout", controller.logOut);
 router.get("/refresh", controller.requestToken);
 

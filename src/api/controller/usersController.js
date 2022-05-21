@@ -1,14 +1,13 @@
 import Model from "../models/User.js";
 import bcrypt from "bcrypt";
 import {
-  createValidate,
   deactivated,
   pwdUpdateValidate,
   updateValidate,
 } from "../../api/utils/validation.js";
 
 import authController from "./authController.js";
-// Read all Users
+
 class userController extends authController {
   static allUsers = async (req, res) => {
     let users = await Model.find({ isDeleted: false }).sort({
@@ -28,12 +27,6 @@ class userController extends authController {
 
   // Read single Users
   static findUser = async (req, res) => {
-    // check if user is not deleted/deactivated
-    let status = await deactivated({ _id: req.params.id });
-    if (status)
-      return res.status(400).json({
-        message: "Your account has been deactivated",
-      });
     // if user is not deactivated or deleted find user
     let user = await Model.findOne({ _id: req.params.id }).sort({
       createdAt: "desc",
@@ -51,14 +44,7 @@ class userController extends authController {
   static updateUser = async (req, res) => {
     try {
       let id = { _id: req.params.id };
-      //
-      // check if user is not deleted/deactivated
-      let status = await deactivated({ _id: req.params.id });
-      if (status)
-        return res.status(400).json({
-          message: "Your account has been deactivated",
-        });
-
+      // validation for input
       let { error, value } = updateValidate.validate(req.body);
       if (error) {
         console.error(error.message);
@@ -88,16 +74,12 @@ class userController extends authController {
   static deactivateUser = async (req, res) => {
     try {
       let status = await deactivated({ _id: req.params.id });
-      if (status)
-        return res.status(400).json({
-          message: "Your account is already deactivated",
-        });
+
       let user = await Model.findOneAndUpdate(
         { _id: req.params.id },
         { isDeleted: true },
         { new: true }
       );
-      // let user = await Model.findOneAndRemove({ _id: req.params.id });
       user
         ? res.status(200).json({
             ok: true,
@@ -124,20 +106,14 @@ class userController extends authController {
           return;
         } else {
           user.isDeleted = false;
-          console.log("setting to false");
           let result = await user.save();
-          console.log("saved to false");
           if (!result) return;
           res.status(200).json({
             ok: true,
             user,
-            message: "Account has been activated",
+            message: "Your account has been activated",
           });
         }
-        // let user = await Model.findOneAndRemove({ _id: req.params.id });
-      } else {
-        console.log("Account activated already");
-        res.status(400).json({ message: "Account activated already" });
       }
     } catch (error) {
       console.error(error.message);
@@ -148,12 +124,6 @@ class userController extends authController {
   // update user password
   static updatePassword = async (req, res) => {
     try {
-      // check if user is not deleted/deactivated
-      let status = await deactivated({ email: req.params.email });
-      if (status)
-        return res.status(400).json({
-          message: "Your account has been deactivated",
-        });
       // check if user exists
       let checkUser = await Model.findOne({ email: req.params.email });
       if (!checkUser)

@@ -2,11 +2,15 @@ import crypto, { createSecretKey } from "crypto";
 import { config } from "dotenv";
 import jwt from "jsonwebtoken";
 
-
 config();
 
-export const notFoundErrorHandler = async (req, res, next) =>
-  res.status(404).render("404", { path: req.path, method: req.method });
+export const erroHandler = (err, req, res, next) => {
+  console.error(err, stack);
+  res
+    .status(500)
+    .json({ error: err.message, message: "Internal Server Error" });
+  next();
+};
 
 export const serverUrl = (req) => {
   return req.protocol + "://" + req.get("host");
@@ -16,13 +20,17 @@ export const secretGenerator = () => crypto.randomBytes(48).toString("hex");
 
 export const generateAuthToken = (user) => {
   return {
-    accessToken: generateToken(user.id, process.env.JWT_SECRET),
-    refreshToken: generateToken(user.id, process.env.REFRESH_TOKEN_SECRET),
+    accessToken: generateToken(user.id, process.env.JWT_SECRET, "15m"),
+    refreshToken: generateToken(
+      user.id,
+      process.env.REFRESH_TOKEN_SECRET,
+      "1d"
+    ),
   };
 };
 
-function generateToken(userId, secret) {
-  return jwt.sign({ userId }, secret, { expiresIn: "1d" });
+function generateToken(userId, secret, expiresIn) {
+  return jwt.sign({ userId }, secret, { expiresIn: expiresIn });
 }
 // generateAccessTokenToDotEnvFile
 
