@@ -1,11 +1,10 @@
 import express, { json, urlencoded } from "express";
 import morgan from "morgan";
-import Database from "./src/configs/db.js";
-import config from "./src/configs/config.js";
-import { erroHandler } from "./src/configs/helpers.js";
-import productRouter from "./src/api/routers/productRoute.js";
-import userRouter from "./src/api/routers/usersRoute.js";
-import authRouter from "./src/api/routers/authRoute.js";
+import Database from "./configs/db.js";
+import config from "./configs/config.js";
+import { erroHandler } from "./configs/helpers.js";
+import productRouter from "./api/routers/productRoute.js";
+import userRouter from "./api/routers/usersRoute.js";
 import cookieParser  from "cookie-parser";
 
 const app = express();
@@ -27,7 +26,6 @@ app.get("/", (req, res) => {
 
 app.use("/product", productRouter);
 app.use("/user", userRouter);
-app.use("/auth", authRouter);
 
 app.set("port", config.port || 3000);
 app.listen(app.get("port"), () => {

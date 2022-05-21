@@ -2,21 +2,21 @@ import { Router } from "express";
 import auth from "../middleware/auth.js";
 import { isActive } from "../middleware/validation.js";
 
-import {
-  updateUser,
-  findUser,
-  allUsers,
-  deactivateUser,
-  activateUser,
-  updatePassword,
-} from "../controller/usersController.js";
+import controller from "../controller/usersController.js";
 const router = Router();
 
-router.get("/", auth, allUsers);
-router.get("/:id", auth, findUser);
-router.put("/update/:id", auth, updateUser);
-router.get("/activate/:id", auth, activateUser);
-router.delete("/deactivate/:id", auth, deactivateUser);
-router.put("/reset-password/:email", updatePassword);
+// authControler
+router.post("/register", controller.register);
+router.post("/login", controller.logIn);
+router.get("/logout", controller.logOut);
+router.get("/refresh", controller.requestToken);
+
+// usersController
+router.get("/", auth, controller.allUsers);
+router.get("/:id", auth, controller.findUser);
+router.put("/update/:id", auth, controller.updateUser);
+router.get("/activate/:id", auth, controller.activateUser);
+router.delete("/deactivate/:id", auth, controller.deactivateUser);
+router.put("/reset-password/:email", controller.updatePassword);
 
 export default router;

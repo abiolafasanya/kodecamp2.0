@@ -19,8 +19,8 @@
     "passport-local": "^1.0.0"
   },
   "scripts": {
-    "dev": "nodemon app.js",
-    "start": "node app.js",
+    "dev": "nodemon ./src/app",
+    "start": "node ./src/app",
     "test": "npx mocha --reporter spec",
     "secret:generate": "echo crypto.randomBytes(48).toString('hex') > process.ENV.SECRET"
   },
