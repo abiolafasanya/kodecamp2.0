@@ -45,46 +45,6 @@ export const findUser = async (req, res) => {
     : res.status(404).json({ ok: false, message: "user not found 😭" });
 };
 
-// Register a new User
-export const register = async (req, res) => {
-  try {
-    // joi validation of input from request
-    let { error, value } = createValidate.validate(req.body);
-    // joi error handler
-    if (error) {
-      console.error(error.message);
-      return res
-        .status(400)
-        .json({ message: "validation failed", error: error.message });
-    }
-    // continue if validation passed
-    let { firstname, lastname, email, password } = value;
-    // hash password
-    password = await bcrypt.hash(password, 10);
-    const newUser = { firstname, lastname, email, password };
-    // check if email exists
-    let ifEmail = await Model.findOne({ email });
-    if (ifEmail)
-      return res.status(401).json({ message: "Email Exists use another" });
-    // if email does not exists proceed to creating a new user
-    let user = await Model.create(newUser);
-    let getDbUser = await Model.findOne({ _id: user._id });
-    user
-      ? res.status(201).json({
-          ok: true,
-          user: getDbUser,
-          message: "New user created 😇",
-        })
-      : res.status(400).json({
-          ok: false,
-          message: "❗ Error encountered while creating new user",
-        });
-  } catch (error) {
-    console.error(error.message);
-    res.status(500).json({ ok: false, message: error.message });
-  }
-};
-
 // update user record
 export const updateUser = async (req, res) => {
   try {
@@ -233,13 +193,3 @@ export const updatePassword = async (req, res) => {
   }
 };
 
-//not part of assignment but for testing to comfirm that update password work by comparing to get a true
-export const sigin = async (req, res) => {
-  let user = await Model.findOne({ _id: req.params.id }).select("+password");
-  console.log(user.password);
-  // compare password
-  let ifPassword = bcrypt.compareSync(req.body.password, user.password);
-  if (ifPassword)
-    return console.log("password is correct, You are now SignedIn", ifPassword);
-  else return console.log("password is incorrect", ifPassword);
-};

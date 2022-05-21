@@ -112,15 +112,12 @@ export const requestToken = async (req, res) => {
         .status(400)
         .json({ message: "cookie is not found, SignIn first" });
     if (!cookies.token)
-      return res
-        .status(400)
-        .json({
-          message: "cookie token is not found, SignIn first",
-          token: cookies.token,
-        });
+      return res.status(400).json({
+        message: "cookie token is not found, SignIn first",
+        token: cookies.token,
+      });
     const refreshToken = cookies.token;
-    const user = await Model.findOne({ refreshToken }).select("+refreshToken");
-    console.log(user)
+    const user = await Model.findOne({ refreshToken });
     if (!user) return res.status(401).json({ message: "Unauthorized" });
     const verify = jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET);
     if (!verify) return res.status(403).json({ message: "invalid token" });
