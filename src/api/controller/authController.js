@@ -58,6 +58,7 @@ class authController {
         let payload = {
           id: user._id,
           name: user.firstname + " " + user.lastname,
+          role: user.role,
         };
 
         const token = generateAuthToken(payload);

@@ -5,7 +5,8 @@ import {
   pwdUpdateValidate,
   updateValidate,
 } from "../../api/utils/validation.js";
-
+import {secretGenerator} from "../../api/utils/helper.js";
+console.log(secretGenerator())
 import authController from "./authController.js";
 
 class userController extends authController {
