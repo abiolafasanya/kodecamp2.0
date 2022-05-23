@@ -8,7 +8,7 @@ import userRouter from "./api/routers/usersRoute.js";
 import cookieParser  from "cookie-parser";
 
 const app = express();
-Database(config.mongodb_uri);
+Database(config.local_mongodb_uri);
 
 //use
 app.use(json());

@@ -1,4 +1,7 @@
 import Model from "../models/Product.js";
+import jwt from "jsonwebtoken";
+import {config} from "dotenv";
+config()
 
 export const allProduct = async (req, res) => {
   try {
@@ -35,8 +38,12 @@ export const getProduct = async (req, res) => {
 
 export const addProduct = async (req, res) => {
   try {
-    console.log('added by ', req.user.name)
-    const data = await Model.create(req.body);
+    console.log('added by ', req.user.payload.name)
+    let {name, description, category, price} = req.body
+    const product = {
+      name, description, category, price, addedBy: req.user.payload.name
+    };
+    const data = await Model.create(product);
     data
       ? res.status(200).json({ ok: true, data, message: "Product added 😊" })
       : res

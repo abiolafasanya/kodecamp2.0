@@ -18,19 +18,19 @@ export const serverUrl = (req) => {
 
 export const secretGenerator = () => crypto.randomBytes(48).toString("hex");
 
-export const generateAuthToken = (user) => {
+export const generateAuthToken = (payload) => {
   return {
-    accessToken: generateToken(user.id, process.env.JWT_SECRET, "15m"),
+    accessToken: generateToken(payload, process.env.JWT_SECRET, "15m"),
     refreshToken: generateToken(
-      user.id,
+      payload,
       process.env.REFRESH_TOKEN_SECRET,
       "1d"
     ),
   };
 };
 
-function generateToken(userId, secret, expiresIn) {
-  return jwt.sign({ userId }, secret, { expiresIn: expiresIn });
+function generateToken(payload, secret, expiresIn) {
+  return jwt.sign({ payload }, secret, { expiresIn: expiresIn });
 }
 // generateAccessTokenToDotEnvFile
 

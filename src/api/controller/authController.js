@@ -60,7 +60,7 @@ class authController {
           name: user.firstname + " " + user.lastname,
           role: user.role,
         };
-
+        console.log(payload);
         const token = generateAuthToken(payload);
         if (!token) return console.log("token is not generated");
 
