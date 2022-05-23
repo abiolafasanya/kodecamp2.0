@@ -41,8 +41,8 @@ export const addProduct = async (req, res) => {
     console.log('added by ', req.user.payload.name)
     let {name, description, category, price} = req.body
     const product = {
-      name, description, category, price, addedBy: req.user.payload.name
-    };
+      name, description, category, price, addedBy: req.user.payload.name,
+    }
     const data = await Model.create(product);
     data
       ? res.status(200).json({ ok: true, data, message: "Product added 😊" })

@@ -1,7 +1,7 @@
 @url = http://localhost:4000/product
 @id = 626448b905786cf2feddfd35
 
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjoiNjI4YjFhNmY5YTAzM2JmMzZiYmNmM2NhIiwibmFtZSI6InRlc3QgYXBpIiwicm9sZSI6InVzZXIifSwiaWF0IjoxNjUzMjg1NjY0LCJleHAiOjE2NTMyODY1NjR9.MVTy9eB6GQhdqecEwCLn7uKfolbV61GMQmM9RhNmWUA
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjoiNjI4YjFhNmY5YTAzM2JmMzZiYmNmM2NhIiwibmFtZSI6InRlc3QgYXBpIiwicm9sZSI6InVzZXIifSwiaWF0IjoxNjUzMjg2OTkwLCJleHAiOjE2NTMyODc4OTB9.2SV5dUGZI5KZHsHkYWmtokALccmR3sNACaTUygnA_vk
 
 ###
 # @name allProduct
@@ -31,13 +31,6 @@ PUT {{url}}/{{id}} HTTP/1.1
 Accept:  application/json
 Content-Type: application/json
 Authorization: bearer {{token}}
-
-{
-    "name": "HP Pavillion",
-    "description": "New, 8GB ram, ssd",
-    "category": "electronics",
-    "price": 150000
-}
 
 {
     "name": "hp pavillion 14HD",
