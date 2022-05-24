@@ -115,8 +115,8 @@ class authController {
       const token = generateAuthToken(user._id);
       if (!token)
         return res.status(400).json({ message: "token not generated" });
-      user.refreshToken = token.refreshToken;
-      user.save();
+      // user.refreshToken = token.refreshToken;
+      // user.save();
       res.status(200).json({
         message: "You are signIn",
         token: token.accessToken,
